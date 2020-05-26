@@ -1,0 +1,13 @@
+{
+	"java.project.referencedLibraries": {
+		"include": [
+			"lib/**/*.jar",
+			"lib/jfugue-5.0.9.jar"
+		],
+		"sources": {
+			"lib/jfugue-5.0.9.jar": "lib/jfugue-5.0.9.jar"
+		}
+	},
+	"git.ignoreLimitWarning": true,
+	"java.dependency.syncWithFolderExplorer": false
+}
