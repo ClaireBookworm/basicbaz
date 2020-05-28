@@ -1,14 +1,8 @@
-## Getting Started
+# FuguedState
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+*Disclaimer: this is by no means done! still working on it... but still shippable in some form.*
 
-## Folder Structure
+## jFugue
+jFugue ([jfugue.org](https://jfugue.org)) is an awesome music library for java that uses an ingenious way of playing music, called the MusicString.
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-## Dependency Management
-
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+This player generates a keyboard (with 15 keys, but you can change it...) and generates a .txt file and .midi file once you're done. Just click exit
