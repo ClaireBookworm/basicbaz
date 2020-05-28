@@ -18,3 +18,10 @@ spring.add(
 spring.add("V1 Rq | C4h C4h | C4h C4h | C4h C4h | C4h C4h | C4h C4h | R "); // left hand
 player.play(spring); // play both!
 ```
+
+## Todo
+- [ ] Get note length differences working
+- [ ] Allow for chords
+- [ ] Allow for two hands 
+- [ ] Smoother interface/keyboard input
+- [ ] Switch through octaves

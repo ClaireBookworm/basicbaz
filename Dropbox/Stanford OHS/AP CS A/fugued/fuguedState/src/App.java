@@ -50,11 +50,11 @@ public class App {
                 counter++;
                 rowC++;
                 writer.write(" " + key.toString() + " ");
-                if (rowC > measure) {
+                if (rowC >= measure) {
                     writer.write(" | ");
                     rowC = 0;
                 }
-                if (counter > (measure * 3)) {
+                if (counter >= (measure * 3)) {
                     writer.write(System.lineSeparator());
                     counter = 0;
                 }
