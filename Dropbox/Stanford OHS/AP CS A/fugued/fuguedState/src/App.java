@@ -1,5 +1,9 @@
+// CLAIRE WANG
+// CS Final Project
+
 import org.jfugue.player.*;
 import java.awt.Color;
+import java.awt.Font;
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
@@ -12,9 +16,9 @@ import java.lang.String;
 public class App {
     static Player player = new Player();
     static JFrame f = new JFrame();
-    static Color muted = new Color(132, 146, 171);
-    static int keyboardSize = 15; //default
-    public static int measure = 4;
+    static int keyboardSize = 20; //default
+    public static int measure = 4; // key signature
+
     // set up an arrayList of notes, it's the music score
     public static ArrayList<Note> score = new ArrayList<>(20);
 
@@ -90,23 +94,14 @@ public class App {
             return new Pattern("C");    
         }
     }
-    public static void playVivaldi() {
-        // Vivaldi's Spring 
-        // just for fun!
-        Pattern spring = new Pattern("T[Allegro]");
-        // this is in music string!
-        spring.add(
-                "V0 C5q | E5q+C5q E5q+C5q E5q+C5q D5i C5i | Eh.+Gh. G5i F5i | E5q+C5q E5q+C5q E5q+C5q D5i C5i | Eh.+Gh. G5i | F5i | E5q G5q F5q E5q | D5h");
-        spring.add("V1 Rq | C4h C4h | C4h C4h | C4h C4h | C4h C4h | C4h C4h | R ");
-        player.play(spring);
-    }
-    public static boolean render(int numKeys) { // exits when x'ed
-        String[] letters = new String[]{"C", "D", "E", "F", "G", "A", "B"};
+
+    public static boolean render(int numKeys) { 
+        String[] letters = new String[]{"C", "D", "E", "F", "G", "A", "B"}; // start on C because starting on A loops around
         
         int letterIndex = 0;
         int xPos = 20;
         int yPos = 100;
-        int octave = 4;
+        int octave = 3;
 
         int rowCounter = 0;
 
@@ -126,8 +121,10 @@ public class App {
                     scoreAdd(letters[letI], play);
                 }
             });
+            // makes sure that it doesn't overflow to hidden depths
             letterIndex++;
             if (letterIndex == letters.length) {
+                // goes up an octave
                 octave++;
                 letterIndex = 0;
             }
@@ -150,20 +147,26 @@ public class App {
 
         // generator button and exit
         Color altGreen = new Color(92, 219, 149);
-        JButton display = new JButton("Exit");
+        JButton display = new JButton("Exit", new ImageIcon("src/assets/docs.png"));
         display.setBounds(20, 20, 100, 40);
         display.setBorderPainted(false);
         display.setBackground(altGreen);
+        display.setFont(new java.awt.Font("SansSerif", Font.BOLD, 18));
+        display.setForeground(new Color(250, 55, 121));
+        display.setOpaque(true);
         display.setVisible(true);
         Scanner input = new Scanner(System.in);
+
         display.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 displayScore(measure);
                 toFile(score, measure);
                 toMIDI(score);
+                // remember to check the terminal after you're done!
                 System.out.println("Playback? (y/n):");
                 char playback = input.next().charAt(0);
                 if (playback == 'y' || playback == 'Y') {
+                    // a bit buggy because jFugue is slow
                     player.play(loadMIDI("fugue-score.mid"));
                 }
                 input.close();
